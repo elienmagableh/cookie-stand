@@ -183,13 +183,13 @@ const Tokyo = {
   };
   Seattle.getAverage(Seattle.min,Seattle.max);
   Seattle.render();
-  Tokyo.getAverage(Seattle.min,Seattle.max);
+  Tokyo.getAverage(Tokyo.min,Tokyo.max);
   Tokyo.render();
-  Dubai.getAverage(Seattle.min,Seattle.max);
+  Dubai.getAverage(Dubai.min,Dubai.max);
   Dubai.render();
-  Paris.getAverage(Seattle.min,Seattle.max);
+  Paris.getAverage(Paris.min,Paris.max);
   Paris.render();
-  Lima.getAverage(Seattle.min,Seattle.max);
+  Lima.getAverage(Lima.min,Lima.max);
   Lima.render();
  function getRandomNumber(min,max){
     return Math.floor(Math.random() * (max - min + 1) + min);
