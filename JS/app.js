@@ -1,4 +1,72 @@
 'use strict';
+let Arr1=[];
+let Arr2=['6am' ,'7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
+function Cookies(name, maximum,minimum,avgCustomer){
+  this.name = name;
+  this.maximum= maximum;
+  this.minimum=minimum;
+  this.avgCustomer=avgCustomer;
+  this.total = 0;
+  this.arr1 = [];
+  this.average=0;
+}
+Cookies.prototype.getavg= function(min,max){
+  this.average = Math.floor(getRandomNumber(min,max)*this.avgCustomer);
+};
+Cookies.prototype.render=function(){
+  const dataRow = document.createElement('tr');
+  h.appendChild(dataRow);
+  const td1El = document.createElement('td');
+  dataRow.appendChild(td1El);
+  td1El.textContent=this.name;
+  for(let i=0;i<Arr2.length ;i++)
+  {
+    this.getavg(this.minimum,this.maximum);
+    this.arr1.push(this.average);
+    const td2El = document.createElement('td');
+    dataRow.appendChild(td2El);
+    td2El.textContent=this.arr1[i];
+    this.total=this.total+this.arr1[i];
+  }
+  const td3El = document.createElement('td');
+  dataRow.appendChild(td3El);
+  td3El.textContent=this.total;
+};
+let h = document.createElement('table');
+document.body.appendChild(h);
+let th1El=document.createElement('th');
+h.appendChild(th1El);
+for (let i=0 ; i<Arr2.length;i++)
+{
+  const th2El = document.createElement('th');
+ h.appendChild(th2El);
+  th2El.textContent=Arr2[i];
+}
+const th3El = document.createElement('th');
+h.appendChild(th3El);
+th3El.textContent='Daily Location Total';
+const Seatle = new Cookies ('SEATLE',65,23,6.3);
+const tokyo = new Cookies('TOKYO',24,3,1.2);
+const Dubai = new Cookies('DUBAI',38,11,3.7);
+const Paris = new Cookies('PARIS',38,20,2.3);
+const Lima = new Cookies('LIMA',16,2,4.6);
+Seatle.getavg(Seatle.minimum,Seatle.minimum);
+Seatle.render();
+tokyo.getavg(tokyo.minimum,tokyo.minimum);
+tokyo.render();
+Dubai.getavg(Dubai.minimum,Dubai.minimum);
+Dubai.render();
+Paris.getavg(Paris.minimum,Paris.minimum);
+Paris.render();
+Lima.getavg(Lima.minimum,Lima.minimum);
+Lima.render();
+
+
+
+
+
+
+/*'use strict';
 const Seattle = {
   name:'SEATTLE',
   min:23,
@@ -190,7 +258,7 @@ const Tokyo = {
   Paris.getAverage(Paris.min,Paris.max);
   Paris.render();
   Lima.getAverage(Lima.min,Lima.max);
-  Lima.render();
+  Lima.render();*/
  function getRandomNumber(min,max){
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
