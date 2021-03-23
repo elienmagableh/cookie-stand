@@ -1,10 +1,28 @@
 
+h1{
+  font-family: 'Syne Mono', monospace;
+}
 a{
-    font-family: 'Syne Mono', monospace;
+  font-family: 'Syne Mono', monospace;
 }
 table, td, th {
-    border: 1px solid black;
-  }
-  table {
-    border-collapse: collapse;
-  }
+  border: 1px solid black;
+}
+table {
+  border-collapse: collapse;
+}
+
+ul li{
+  font-family: 'Syne Mono', monospace;
+}
+.gal{
+  margin: 10px 50px;
+}
+.gal img{
+  transition: 1s;
+  padding: 15px;
+  width: 200px;
+}
+body{
+  background-color: rgb(86, 109, 241);
+}
