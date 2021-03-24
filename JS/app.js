@@ -1,5 +1,5 @@
 'use strict';
-let Arr1=[];
+let Arr3=[];
 let Arr2=['6am' ,'7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
 function Cookies(name, maximum,minimum,avgCustomer){
   this.name = name;
@@ -9,6 +9,7 @@ function Cookies(name, maximum,minimum,avgCustomer){
   this.total = 0;
   this.arr1 = [];
   this.average=0;
+  Arr3.push(this);
 }
 Cookies.prototype.getavg= function(min,max){
   this.average = Math.floor(getRandomNumber(min,max)*this.avgCustomer);
@@ -34,8 +35,8 @@ Cookies.prototype.render=function(){
 };
 let h = document.createElement('table');
 document.body.appendChild(h);
-let th1El=document.createElement('th');
-h.appendChild(th1El);
+let headerRow=document.createElement('th');
+h.appendChild(headerRow);
 for (let i=0 ; i<Arr2.length;i++)
 {
   const th2El = document.createElement('th');
@@ -45,6 +46,33 @@ for (let i=0 ; i<Arr2.length;i++)
 const th3El = document.createElement('th');
 h.appendChild(th3El);
 th3El.textContent='Daily Location Total';
+
+function getfooter(){
+  const headerRow = document.createElement('tr');
+  h.appendChild(headerRow);
+  const th1El = document.createElement('td');
+  headerRow.appendChild(th1El);
+  th1El.textContent='           ';
+  let Arr4=[];
+  let total=0;
+  for (let i=0 ; i<Arr2.length;i++)
+  { 
+    let td2el = document.createElement('th');
+    let total1=0;
+    for(let y=0;y<Arr3.length;y++)
+    {
+      total1+=Arr3[y].arr1[i];
+      total+=Arr3[y].arr1[i];
+    }
+    Arr4.push(total1);
+    td2el.textContent=total1;
+    headerRow.appendChild(td2el);
+  }
+  let td3el = document.createElement('th');
+  headerRow.appendChild(td3el);
+  td3el.textContent=total;
+}
+
 const Seatle = new Cookies ('SEATLE',65,23,6.3);
 const tokyo = new Cookies('TOKYO',24,3,1.2);
 const Dubai = new Cookies('DUBAI',38,11,3.7);
@@ -60,6 +88,24 @@ Paris.getavg(Paris.minimum,Paris.minimum);
 Paris.render();
 Lima.getavg(Lima.minimum,Lima.minimum);
 Lima.render();
+getfooter();
+
+let form = document.getElementById('cooForm');
+
+form.addEventListener('submit', addlocation);
+
+function addlocation(event) {
+  event.preventDefault();
+  let Name = event.target.name.value;
+  let minimum = event.target.minimum.value;
+  let maximum = event.target.maximum.value;
+  let avgCustomer = event.target.avgCustomer.value;
+  let location = new Cookies(Name,maximum ,minimum ,avgCustomer )
+  location.getavg(location.minimum,location.maximum);
+  location.render();
+  h.deleteRow(Arr3.length-1) ;
+  getfooter();
+}
 
 
 
