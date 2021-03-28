@@ -1,9 +1,12 @@
 
 h1{
   font-family: 'Syne Mono', monospace;
+  color: rgb(224, 238, 23);
+ 
 }
 a{
   font-family: 'Syne Mono', monospace;
+  color: brown;
 }
 table, td, th {
   border: 1px solid black;
@@ -14,6 +17,8 @@ table {
 
 ul li{
   font-family: 'Syne Mono', monospace;
+  color: rgb(247, 10, 10);
+  background-color: rgb(37, 6, 6);
 }
 .gal{
   margin: 10px 50px;
